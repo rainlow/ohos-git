@@ -105,10 +105,7 @@ cd ..
 curl -L -O http://mirrors.ustc.edu.cn/gnu/gettext/gettext-0.22.tar.gz
 tar -zxf gettext-0.22.tar.gz
 cd gettext-0.22/
-./configure \
-    --prefix=/opt/deps \
-    --host=aarch64-linux \
-    --disable-shared 
+./configure --prefix=/opt/deps --host=aarch64-linux --disable-shared 
 make -j$(nproc)
 make install
 cd ..

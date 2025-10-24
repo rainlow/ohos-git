@@ -36,7 +36,7 @@ export CXXFLAGS="-fPIC -D__MUSL__=1"
 # Build openssl
 curl -L -O https://github.com/openssl/openssl/releases/download/OpenSSL_1_1_1w/openssl-1.1.1w.tar.gz
 tar -zxf openssl-1.1.1w.tar.gz
-cd openssl-1.1.1w/
+cd openssl-1.1.1w
 ./Configure --prefix=/opt/deps linux-aarch64 no-shared
 make -j$(nproc)
 make install
@@ -79,7 +79,7 @@ cd ..
 # Build pcre2
 curl -L -O https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.43/pcre2-10.43.tar.gz
 tar -zxf pcre2-10.43.tar.gz
-cd pcre2-10.43/
+cd pcre2-10.43
 ./configure --prefix=/opt/deps --host=aarch64-linux --disable-shared
 make -j$(nproc)
 make install
@@ -88,7 +88,7 @@ cd ..
 # Build curl
 curl -L -O https://curl.se/download/curl-8.0.1.tar.gz
 tar -zxf curl-8.0.1.tar.gz
-cd curl-8.0.1/
+cd curl-8.0.1
 ./configure \
     --prefix=/opt/deps \
     --host=aarch64-linux \
@@ -104,7 +104,7 @@ cd ..
 # Build gettext
 curl -L -O http://mirrors.ustc.edu.cn/gnu/gettext/gettext-0.22.tar.gz
 tar -zxf gettext-0.22.tar.gz
-cd gettext-0.22/
+cd gettext-0.22
 ./configure --prefix=/opt/deps --host=aarch64-linux --disable-shared 
 make -j$(nproc)
 make install

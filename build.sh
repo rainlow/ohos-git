@@ -96,7 +96,7 @@ cd curl-8.0.1/
     --with-ca-bundle=/etc/ssl/certs/cacert.pem \
     --with-ca-path=/etc/ssl/certs \
     --disable-shared \
-    CFLAGS="-Wno-int-conversion $CFLAGS"
+    CPPFLAGS="-D_GNU_SOURCE"
 make -j$(nproc)
 make install
 cd ..
@@ -108,8 +108,7 @@ cd gettext-0.22/
 ./configure \
     --prefix=/opt/deps \
     --host=aarch64-linux \
-    --disable-shared \
-    CFLAGS="-Wno-int-conversion $CFLAGS"
+    --disable-shared 
 make -j$(nproc)
 make install
 cd ..
@@ -137,7 +136,6 @@ make configure
     ac_cv_snprintf_returns_bogus=no \
     ac_cv_lib_curl_curl_global_init=yes \
     ac_cv_prog_CURL_CONFIG=/opt/deps/bin/curl-config \
-    CFLAGS="-I/opt/deps/include" \
     CPPFLAGS="-I/opt/deps/include" \
     LDFLAGS="-L/opt/deps/lib"
 make -j$(nproc)

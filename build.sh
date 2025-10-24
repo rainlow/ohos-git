@@ -54,7 +54,7 @@ cd ..
 # Build expat
 curl -L -O https://github.com/libexpat/libexpat/releases/download/R_2_6_2/expat-2.6.2.tar.gz
 tar -zxf expat-2.6.2.tar.gz
-cd expat-2.6.2/
+cd expat-2.6.2
 ./configure \
     --prefix=/opt/deps \
     --host=aarch64-linux \

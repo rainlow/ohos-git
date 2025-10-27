@@ -1,12 +1,13 @@
 # ohos-git
+本项目为 OpenHarmony 平台编译了 git，并发布预构建包。
 
-This project will build Git for the OpenHarmony platform and release prebuilt packages.
+## 获取预构建包
+前往 [release 页面](https://github.com/Harmonybrew/ohos-git/releases) 获取。
 
-## Get prebuilt packages
-Go to the [release page](https://github.com/Harmonybrew/ohos-git/releases).
+## 从源码构建
+需要用一台 Linux x64 服务器来运行项目里的 build.sh，以实现 git 的交叉编译。
 
-## Build from source
-Run the build.sh script on a Linux x64 server to cross-compile Git for OpenHarmony (e.g., on Ubuntu 24.04 x64).
+这里以 Ubuntu 24.04 x64 作为示例：
 ```sh
 sudo apt update && sudo apt install -y build-essential autoconf gettext file unzip jq
 ./build.sh

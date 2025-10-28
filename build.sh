@@ -10,6 +10,7 @@ query_component() {
     --data-raw '{"projectName":"openharmony","branch":"master","pageNum":1,"pageSize":10,"deviceLevel":"","component":"'${component}'","type":1,"startTime":"2025080100000000","endTime":"20990101235959","sortType":"","sortField":"","hardwareBoard":"","buildStatus":"success","buildFailReason":"","withDomain":1}'
 }
 sdk_download_url=$(query_component "ohos-sdk-public" | jq -r ".data.list.dataList[0].obsPath")
+echo "sdk_download_url: ${sdk_download_url}"
 curl $sdk_download_url -o ohos-sdk-public.tar.gz
 mkdir -p /opt/ohos-sdk
 tar -zxf ohos-sdk-public.tar.gz -C /opt/ohos-sdk

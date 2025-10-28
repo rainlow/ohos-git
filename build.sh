@@ -114,6 +114,7 @@ cd ..
 curl -L https://github.com/git/git/archive/refs/tags/v2.45.2.tar.gz -o git-2.45.2.tar.gz
 tar -zxf git-2.45.2.tar.gz
 cd git-2.45.2
+patch -p1 < 0001-let-git-portable.patch
 make configure
 ./configure \
     --prefix=/opt/git-2.45.2-ohos-arm64 \
@@ -133,7 +134,7 @@ make configure
     ac_cv_snprintf_returns_bogus=no \
     ac_cv_lib_curl_curl_global_init=yes \
     ac_cv_prog_CURL_CONFIG=/opt/deps/bin/curl-config \
-    CPPFLAGS="-I/opt/deps/include" \
+    CPPFLAGS="-I/opt/deps/include -DRUNTIME_PREFIX" \
     LDFLAGS="-L/opt/deps/lib"
 make -j$(nproc)
 make install

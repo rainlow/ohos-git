@@ -1,0 +1,32 @@
+diff --git a/Makefile b/Makefile
+index 1e31acc72e..d2d3c86c99 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2256,6 +2256,14 @@ TCLTK_PATH_SQ = $(subst ','\'',$(TCLTK_PATH))
+ DIFF_SQ = $(subst ','\'',$(DIFF))
+ PERLLIB_EXTRA_SQ = $(subst ','\'',$(PERLLIB_EXTRA))
+ 
++ifdef RUNTIME_PREFIX
++ETC_GITCONFIG_SQ = $(patsubst $(prefix)/%,%,$(ETC_GITCONFIG))
++ETC_GITATTRIBUTES_SQ = $(patsubst $(prefix)/%,%,$(ETC_GITATTRIBUTES))
++
++gitexecdir_SQ = $(patsubst $(prefix)/%,%,$(gitexecdir))
++template_dir_SQ = $(patsubst $(prefix)/%,%,$(template_dir))
++endif
++
+ # RUNTIME_PREFIX's resolution logic requires resource paths to be expressed
+ # relative to each other and share an installation path.
+ #
+diff --git a/git-instaweb.sh b/git-instaweb.sh
+index 994431c887..18895604c5 100755
+--- a/git-instaweb.sh
++++ b/git-instaweb.sh
+@@ -39,7 +39,7 @@ conf="$GIT_DIR/gitweb/httpd.conf"
+ test -z "$httpd" && httpd='lighttpd -f'
+ 
+ # Default is @@GITWEBDIR@@
+-test -z "$root" && root='@@GITWEBDIR@@'
++test -z "$root" && root=$(realpath $(dirname $0)/../../share/gitweb)
+ 
+ # any untaken local port will do...
+ test -z "$port" && port=1234

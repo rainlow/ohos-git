@@ -115,8 +115,8 @@ curl -L https://github.com/git/git/archive/refs/tags/v2.45.2.tar.gz -o git-2.45.
 tar -zxf git-2.45.2.tar.gz
 cd git-2.45.2
 patch -p1 < ../0001-let-git-portable.patch
-sed -i '225i sprintf(stderr, "mac 1 ===");\n' exec-cmd.c
-sed -i '265i sprintf(stderr, "mac 2 ===");\n' exec-cmd.c
+sed -i '225i trace_printf("mac 1 ===");\n' exec-cmd.c
+sed -i '265i trace_printf("mac 2 ===");\n' exec-cmd.c
 echo "=== exec-cmd.c ==="
 cat exec-cmd.c
 echo "=== exec-cmd.c done ==="

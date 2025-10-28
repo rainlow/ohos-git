@@ -136,7 +136,7 @@ make configure
     ac_cv_prog_CURL_CONFIG=/opt/deps/bin/curl-config \
     CPPFLAGS="-I/opt/deps/include -DRUNTIME_PREFIX" \
     LDFLAGS="-L/opt/deps/lib"
-make -j$(nproc) RUNTIME_PREFIX=1
+make -j$(nproc) RUNTIME_PREFIX=1 V=1
 make install
 cp COPYING /opt/git-2.45.2-ohos-arm64/
 cd ..

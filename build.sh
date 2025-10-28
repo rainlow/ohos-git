@@ -114,7 +114,7 @@ cd ..
 curl -L https://github.com/git/git/archive/refs/tags/v2.45.2.tar.gz -o git-2.45.2.tar.gz
 tar -zxf git-2.45.2.tar.gz
 cd git-2.45.2
-patch -p1 < 0001-let-git-portable.patch
+patch -p1 < ../0001-let-git-portable.patch
 make configure
 ./configure \
     --prefix=/opt/git-2.45.2-ohos-arm64 \

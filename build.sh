@@ -147,15 +147,15 @@ make install
 cp COPYING /opt/git-2.45.2-ohos-arm64/
 cd ..
 
-# Codesign
-elf_files=$(find /opt/git-2.45.2-ohos-arm64/libexec/git-core -type f -print0 \
-    | xargs -0 -n256 file -N \
-    | awk -F: '$2 ~ /ELF/ {print $1}')
-elf_files_unique=$(echo "$elf_files" \
-    | xargs -n1 stat -c '%i %n' 2>/dev/null \
-    | sort -k1,1 -u \
-    | cut -d' ' -f2-)
-echo "$elf_files_unique" | xargs -I {} /opt/ohos-sdk/linux/toolchains/lib/binary-sign-tool sign -inFile {} -outFile {} -selfSign 1
+# # Codesign
+# elf_files=$(find /opt/git-2.45.2-ohos-arm64/libexec/git-core -type f -print0 \
+#     | xargs -0 -n256 file -N \
+#     | awk -F: '$2 ~ /ELF/ {print $1}')
+# elf_files_unique=$(echo "$elf_files" \
+#     | xargs -n1 stat -c '%i %n' 2>/dev/null \
+#     | sort -k1,1 -u \
+#     | cut -d' ' -f2-)
+# echo "$elf_files_unique" | xargs -I {} /opt/ohos-sdk/linux/toolchains/lib/binary-sign-tool sign -inFile {} -outFile {} -selfSign 1
 
 cd /opt
 tar -zcf git-2.45.2-ohos-arm64.tar.gz git-2.45.2-ohos-arm64
